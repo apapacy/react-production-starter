@@ -1,5 +1,6 @@
 import path from 'path';
 import express from 'express';
+import session from 'express-session';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -51,6 +52,10 @@ server.use(helmet.frameguard('deny'));
 server.use(helmet.ieNoOpen());
 server.use(helmet.noSniff());
 server.use(cookieParser());
+server.use(session({
+  secret: 'keyboard cat',
+  resave: true, saveUninitialized: true
+}));
 server.use(compression());
 
 // API

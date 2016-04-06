@@ -5,6 +5,7 @@ const router = new Router();
 import fakeDB from '../fakeDB.js';
 
 router.get('/', (req, res) => {
+  req.session = 'test';
   res.statusCode = 200;
   res.json(fakeDB);
 });
